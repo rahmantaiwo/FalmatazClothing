@@ -1,0 +1,57 @@
+﻿@using FalmatazClothing.Models.DTO.Design;
+@model IEnumerable<DesignDto>;
+
+@{
+    ViewData["Title"] = "Designs";
+}
+
+<a href="@Url.Action("CreateDesign", "Design")" class="btn btn-success mb-2">Create Design</a>
+
+<div class="col-md-10">
+    <table class="table table-responsive">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Fabric</th>
+                <th scope="col">Style (Yard)</th>
+                <th scope="col">Price</th>
+                <th scope="col">Image</th>
+                <th scope="col">Action</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            @if (Model?.Any() ?? false)
+            {
+                var index = 1;
+                foreach (var item in Model)
+                {
+                    <tr>
+                        <th scope="row">@index</th>
+                        <td>@item.Fabric</td>
+                        <td>@item.Style</td>
+                        <td>@item.Price</td>
+                        <td>
+                            <img src="/images/@item.Image" alt="Image" style="width: 100px; height: auto;" />
+                        </td>
+
+                        <td>
+                            <a asp-controller="Design" asp-action="DesignDetail"
+                               asp-route-id="@item.Id" class="btn btn-outline-info">Detail</a>
+
+                            <a asp-controller="Design" asp-action="DeleteDesign" asp-route-id="@item.Id"
+                               class="btn btn-outline-danger">Delete</a>
+                        </td>
+                    </tr>
+                    index++;
+                }
+            }
+            else
+            {
+                <tr>
+                    <td colspan="4" class="text-center">No Records Found</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

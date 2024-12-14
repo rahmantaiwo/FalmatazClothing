@@ -1,0 +1,22 @@
+﻿@using FalmatazClothing.Models.DTO.Inventory;
+@model InventoryDto
+
+@{
+    ViewData["Title"] = "InventoryDetail";
+}
+
+<div class="col-md-4">
+    <div class="card">
+        <div class="card-header">
+            @Model.Fabric
+            <div class="card-body">
+                <p class="card-text">Fabric: @Model.Fabric</p>
+                <p class="card-text">Quantity: @Model.Quantity</p>
+                <p class="card-text">Price: @Model.Price</p>
+                <p class="card-text">ImageFileName: @Model.ImageFileName</p>
+                <a asp-controller="Inventory" asp-action="UpdateInventory"
+                   asp-route-id="@Model.Id" class="btn btn-dark">Edit</a>
+            </div>
+        </div>
+    </div>
+</div>

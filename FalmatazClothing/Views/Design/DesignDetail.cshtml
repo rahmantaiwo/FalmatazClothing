@@ -1,0 +1,22 @@
+﻿@using FalmatazClothing.Models.DTO.Design;
+@model DesignDto
+
+@{
+    ViewData["Title"] = "DesignDetail";
+}
+
+<div class="col-md-4">
+    <div class="card">
+        <div class="card-header">
+            @Model.Fabric
+            <div class="card-body">
+                <p class="card-text">Fabric: @Model.Fabric</p>
+                <p class="card-text">Quantity: @Model.Style</p>
+                <p class="card-text">Price: @Model.Price</p>
+                <p class="card-text">ImageFileName: @Model.Image</p>
+                <a asp-controller="DEsign" asp-action="UpdateDesign"
+                   asp-route-id="@Model.Id" class="btn btn-dark">Edit</a>
+            </div>
+        </div>
+    </div>
+</div>
