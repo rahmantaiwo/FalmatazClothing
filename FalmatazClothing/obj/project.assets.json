@@ -4829,11 +4829,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\HP\\source\\repos\\FalmatazClothing\\FalmatazClothing\\FalmatazClothing.csproj",
+      "projectUniqueName": "C:\\Users\\HP\\Documents\\c#\\FalmatazClothing\\FalmatazClothing\\FalmatazClothing.csproj",
       "projectName": "FalmatazClothing",
-      "projectPath": "C:\\Users\\HP\\source\\repos\\FalmatazClothing\\FalmatazClothing\\FalmatazClothing.csproj",
+      "projectPath": "C:\\Users\\HP\\Documents\\c#\\FalmatazClothing\\FalmatazClothing\\FalmatazClothing.csproj",
       "packagesPath": "C:\\Users\\HP\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\HP\\source\\repos\\FalmatazClothing\\FalmatazClothing\\obj\\",
+      "outputPath": "C:\\Users\\HP\\Documents\\c#\\FalmatazClothing\\FalmatazClothing\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

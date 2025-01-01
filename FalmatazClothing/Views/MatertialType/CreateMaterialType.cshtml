@@ -1,0 +1,26 @@
+﻿@{
+    ViewData["Title"] = "CreateMaterialType";
+}
+
+<div class="row">
+    <div class="col-md-12 rounded mx-auto border p-3">
+        <h4 class="text-center">MATERIALS</h4>
+        <p class="text-center">Create Materials</p>
+        <form asp-controller="MaterialType" asp-action="CreateMaterialType" enctype="multipart/form-data">
+
+            <div class="mb-3">
+                <label class="form-label">Name</label>
+                <input type="text" class="form-control" name="Fabric" required />
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Image</label>
+                <input type="file" class="form-control" name="ImageUrl" multiple required />
+            </div>
+
+            <div class="row">
+                <button type="submit">Create</button>
+            </div>
+        </form>
+    </div>
+</div>

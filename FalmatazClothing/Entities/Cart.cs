@@ -2,8 +2,6 @@
 {
 	public class Cart : Auditability
 	{
-		public Guid DesignId { get; set; }
-		public Design Design { get; set; }
-
+		public ICollection<CartItem> CartItems { get; set; }
 	}
 }

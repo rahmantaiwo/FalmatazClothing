@@ -17,71 +17,55 @@ build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = FalmatazClothing
 build_property.RootNamespace = FalmatazClothing
-build_property.ProjectDir = C:\Users\HP\source\repos\FalmatazClothing\FalmatazClothing\
+build_property.ProjectDir = C:\Users\HP\Documents\c#\FalmatazClothing\FalmatazClothing\
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 
 build_property.RazorLangVersion = 8.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = C:\Users\HP\source\repos\FalmatazClothing\FalmatazClothing
+build_property.MSBuildProjectDirectory = C:\Users\HP\Documents\c#\FalmatazClothing\FalmatazClothing
 build_property._RazorSourceGeneratorDebug = 
 
-[C:/Users/HP/source/repos/FalmatazClothing/FalmatazClothing/Views/Design/CreateDesign.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGVzaWduXENyZWF0ZURlc2lnbi5jc2h0bWw=
-build_metadata.AdditionalFiles.CssScope = 
-
-[C:/Users/HP/source/repos/FalmatazClothing/FalmatazClothing/Views/Design/DesignDetail.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGVzaWduXERlc2lnbkRldGFpbC5jc2h0bWw=
-build_metadata.AdditionalFiles.CssScope = 
-
-[C:/Users/HP/source/repos/FalmatazClothing/FalmatazClothing/Views/Design/Designs.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGVzaWduXERlc2lnbnMuY3NodG1s
-build_metadata.AdditionalFiles.CssScope = 
-
-[C:/Users/HP/source/repos/FalmatazClothing/FalmatazClothing/Views/Design/UpdateDesign.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGVzaWduXFVwZGF0ZURlc2lnbi5jc2h0bWw=
-build_metadata.AdditionalFiles.CssScope = 
-
-[C:/Users/HP/source/repos/FalmatazClothing/FalmatazClothing/Views/Home/Index.cshtml]
+[C:/Users/HP/Documents/c\#/FalmatazClothing/FalmatazClothing/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/HP/source/repos/FalmatazClothing/FalmatazClothing/Views/Home/Privacy.cshtml]
+[C:/Users/HP/Documents/c\#/FalmatazClothing/FalmatazClothing/Views/Home/Privacy.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/HP/source/repos/FalmatazClothing/FalmatazClothing/Views/Inventory/CreateInventory.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSW52ZW50b3J5XENyZWF0ZUludmVudG9yeS5jc2h0bWw=
+[C:/Users/HP/Documents/c\#/FalmatazClothing/FalmatazClothing/Views/MatertialType/CreateMaterialType.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWF0ZXJ0aWFsVHlwZVxDcmVhdGVNYXRlcmlhbFR5cGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/HP/source/repos/FalmatazClothing/FalmatazClothing/Views/Inventory/Inventories.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSW52ZW50b3J5XEludmVudG9yaWVzLmNzaHRtbA==
+[C:/Users/HP/Documents/c\#/FalmatazClothing/FalmatazClothing/Views/MatertialType/MaterialTypeDetail.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWF0ZXJ0aWFsVHlwZVxNYXRlcmlhbFR5cGVEZXRhaWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/HP/source/repos/FalmatazClothing/FalmatazClothing/Views/Inventory/InventoryDetail.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSW52ZW50b3J5XEludmVudG9yeURldGFpbC5jc2h0bWw=
+[C:/Users/HP/Documents/c\#/FalmatazClothing/FalmatazClothing/Views/MatertialType/MaterialTypes.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWF0ZXJ0aWFsVHlwZVxNYXRlcmlhbFR5cGVzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/HP/source/repos/FalmatazClothing/FalmatazClothing/Views/Inventory/UpdateInventory.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSW52ZW50b3J5XFVwZGF0ZUludmVudG9yeS5jc2h0bWw=
+[C:/Users/HP/Documents/c\#/FalmatazClothing/FalmatazClothing/Views/MatertialType/UpdateMaterialType.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWF0ZXJ0aWFsVHlwZVxVcGRhdGVNYXRlcmlhbFR5cGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/HP/source/repos/FalmatazClothing/FalmatazClothing/Views/Shared/Error.cshtml]
+[C:/Users/HP/Documents/c\#/FalmatazClothing/FalmatazClothing/Views/Shared/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/HP/source/repos/FalmatazClothing/FalmatazClothing/Views/Shared/_ValidationScriptsPartial.cshtml]
+[C:/Users/HP/Documents/c\#/FalmatazClothing/FalmatazClothing/Views/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/HP/source/repos/FalmatazClothing/FalmatazClothing/Views/_ViewImports.cshtml]
+[C:/Users/HP/Documents/c\#/FalmatazClothing/FalmatazClothing/Views/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/HP/source/repos/FalmatazClothing/FalmatazClothing/Views/_ViewStart.cshtml]
+[C:/Users/HP/Documents/c\#/FalmatazClothing/FalmatazClothing/Views/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/HP/source/repos/FalmatazClothing/FalmatazClothing/Views/Shared/_Layout.cshtml]
+[C:/Users/HP/Documents/c\#/FalmatazClothing/FalmatazClothing/Views/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = b-7sa24obrx9

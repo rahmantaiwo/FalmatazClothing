@@ -1,9 +1,10 @@
 using Microsoft.EntityFrameworkCore;
 using FalmatazClothing.Entities;
-using FalmatazClothing.Models.IRepository;
 using FalmatazClothing.Models.IServices;
 using FalmatazClothing.Models.Services;
+using FalmatazClothing.Models.IRepository;
 using FalmatazClothing.Models.Repository;
+
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -15,14 +16,13 @@ var dbConnection = builder.Configuration.GetConnectionString("DefaultConnection"
 builder.Services.AddSqlServer<ApplicationDbContext>(dbConnection);
 
 //Services
-builder.Services.AddScoped<IInventoryServices, InventoryServices>();                                                                   
-builder.Services.AddScoped<IDesignServices, DesignServices>();                                                                   
-builder.Services.AddScoped<IImageService, ImageService>();                                                                   
 
+builder.Services.AddScoped<IMaterialTypeService, MaterialTypeService>();
+builder.Services.AddScoped<IImageService, ImageService>();
 
 //Repository
-builder.Services.AddScoped<IInventoryRepository, InventoryRepository>();
-builder.Services.AddScoped<IDesignRepository, DesignRepository>();
+builder.Services.AddScoped<IMaterialTypeRepository, MaterialTypeRepository>();
+
 
 var app = builder.Build();
 
