@@ -1,20 +1,21 @@
-﻿
-@using FalmatazClothing.Models.DTO.MaterialType;
-@model IEnumerable<MaterialTypeDto>
-
+﻿@using FalmatazClothing.Models.DTO.Product;
+@model IEnumerable<ProductDto>
+ 
 @{
-    ViewData["Title"] = "MaterialTypes";
-}
+    ViewData["Title"] = "Products";
+} 
 
-<a href="@Url.Action("CreateMaterialType", "MaterialType")" class="btn btn-success mb-2">Create Materials</a>
+<a href="@Url.Action("CreateProduct", "Product")" class="btn btn-success mb-2">Create Product</a>
 
 <div class="col-md-10">
     <table class="table table-responsive">
         <thead>
             <tr>
                 <th scope="col">#</th>
-                <th scope="col">Name</th>
+                <th scope="col">Product</th>
+                <th scope="col">Material</th>
                 <th scope="col">Image</th>
+                <th scope="col">Price</th>
                 <th scope="col">Action</th>
             </tr>
         </thead>
@@ -28,15 +29,17 @@
                     <tr>
                         <th scope="row">@index</th>
                         <td>@item.Name</td>
+                        <td>@item.MaterialType</td>
                         <td>
-                            <img src="@item.ImageUrl" alt="Image" style="width: 100px; height: auto;" />
+                            <img src="@item.ImageProduct" alt="Image" style="width: 100px; height: auto;" />
                         </td>
+                        <td>@item.Price</td>
 
                         <td>
-                            <a asp-controller="Material" asp-action="MaterialTypeDetail"
+                            <a asp-controller="Product" asp-action="ProductDetail"
                                asp-route-id="@item.Id" class="btn btn-outline-info">Detail</a>
 
-                            <a asp-controller="MaterialType" asp-action="DeleteMaterialType" asp-route-id="@item.Id"
+                            <a asp-controller="Product" asp-action="DeleteProduct" asp-route-id="@item.Id"
                                class="btn btn-outline-danger">Delete</a>
                         </td>
                     </tr>

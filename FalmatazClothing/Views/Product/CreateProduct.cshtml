@@ -1,0 +1,39 @@
+﻿@{
+    ViewData["Title"] = "CreateProduct";
+}
+
+<div class="row">
+    <div class="col-md-8 rounded mx-auto border p-3">
+        <h4 class="text-center">PRODUCTS</h4>
+        <p class="text-center">Create Products</p>
+        <form asp-controller="Product" asp-action="CreateProduct" enctype="multipart/form-data">
+
+            <div class="mb-3">
+                <label class="form-label">Name</label>
+                <input type="text" class="form-control" name="Fabric" required />
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">MaterialType</label>
+                <select name="MaterialTypeId" class="form-select" asp-items="@(ViewData["selectMaterialTypes"] as IEnumerable<SelectListItem>)" required>
+                    <option>Select Material Types</option>
+                </select>
+            </div>
+
+
+            <div class="mb-3">
+                <label class="form-label">Image</label>
+                <input type="file" class="form-control" name="ImageUrl" multiple required />
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Price</label>
+                <input type="number" class="form-control" name="Price" required />
+            </div>
+
+            <div class="row">
+                <button type="submit" class="">Create</button>
+            </div>
+        </form>
+    </div>
+</div>

@@ -33,7 +33,7 @@ namespace FalmatazClothing.Models.Services
             //var filePath = Path.Combine(_environment.WebRootPath, _imageFolderPath);
             //Directory.CreateDirectory(_imageFolderPath);
 
-            foreach (var file in files)
+            foreach (var file  in files)
             {
                 if (file.Length > 0)
                 {

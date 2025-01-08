@@ -1,0 +1,43 @@
+﻿@using FalmatazClothing.Models.DTO.Product;
+@model ProductDto;
+@{
+    ViewData["Title"] = "UpdateProduct";
+    var id = Context.GetRouteValue("Id").ToString();
+}
+
+<div class="row">
+    <div class="col-md-8 rounded mx-auto border p-3">
+        <h4 class="text-center">UpdateProduct</h4>
+        <form asp-controller="Product" asp-action="UpdateProduct">
+
+            <div class="mb-3">
+                <label class="form-label">Name</label>
+                <input type="text" name="Name" class="form-control" value="@Model.Name" required />
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">MaterialType</label>
+                <select name="MaterialTypeId" class="form-select" asp-items="@(ViewData["selectMaterialTypes"] as IEnumerable<SelectListItem>)" required>
+                    <option>Select Material Types</option>
+                </select>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Image</label>
+                <input type="file" class="form-control" name="ImageProduct" value="@Model.ImageProduct" multiple required />
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Price</label>
+                <input type="number" name="Price" class="form-control" value="@Model.Price" required />
+            </div>
+
+            <div class="row">
+                <button asp-controller="MaterialType" asp-action="UpdateMaterialType"
+                        type="Update" class="btn btn-outline-dark">
+                    Update
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
