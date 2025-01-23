@@ -6,6 +6,7 @@ namespace FalmatazClothing.Models.IRepository
     public interface IMaterialTypeRepository
     {
         Task<List<MaterialType>> GetAllMaterialTypeAsync();
-        Task<MaterialType> GetMaterialTypeAsync(Guid id);
+        Task<MaterialType?> GetMaterialTypeAsync(Guid id);
+        Task<MaterialType?> GetMaterialTypeByNameAsync(string name);
     }
 }

@@ -1,4 +1,5 @@
 ﻿using FalmatazClothing.Entities;
+using System.ComponentModel.DataAnnotations;
 
 namespace FalmatazClothing.Models.DTO.MaterialType
 {

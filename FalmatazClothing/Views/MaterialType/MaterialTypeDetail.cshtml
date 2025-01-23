@@ -10,7 +10,7 @@
         <div class="card-header">
             @Model.Name
             <div class="card-body">
-                <p class="card-text">Name: @Model.Name</p>
+                <p class="card-text"><strong>Name:</strong>  @Model.Name</p>
                 <p class="card-text">ImageUrl: @Model.ImageUrl</p>
                 <a asp-controller="MaterialType" asp-action="UpdateMaterialType"
                    asp-route-id="@Model.Id" class="btn btn-dark">Edit</a>

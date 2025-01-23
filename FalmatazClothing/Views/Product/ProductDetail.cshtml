@@ -1,4 +1,4 @@
-﻿@using FalmatazClothing.Models.DTO.Product;
+﻿@* @using FalmatazClothing.Models.DTO.Product;
 @model ProductDto
 
 @{
@@ -10,12 +10,42 @@
         <div class="card-header">
             @Model.Name
             <div class="card-body">
+                <h5 class="card">@Model.Name</h5>
                 <p class="card-text">Name: @Model.Name</p>
                 <p class="card-text">MaterialType: @Model.MaterialType</p>
-                <p class="card-text">ImageProduct: @Model.ImageProduct</p>
+                <p class="card-text">ImageProduct: @Model.ImageProduct</p>  
                 <p class="card-text">Price: @Model.Price</p>
                 <a asp-controller="Product" asp-action="UpdateProduct"
                    asp-route-id="@Model.Id" class="btn btn-dark">Edit</a>
+            </div>
+        </div>
+    </div>
+</div> *@
+
+@using FalmatazClothing.Models.DTO.Product;
+@model ProductDto;
+
+@{
+    ViewData["Title"] = "ProductDetail";
+}
+
+<div class="col-md-4">
+    <div class="card">
+        <div class="card-header">
+            @Model.Style
+
+            <div class="card-body">
+                <h5 class="card-name">@Model.Style</h5>
+                <p class="card-text"><strong>Name:</strong> @Model.Style</p>
+                <p class="card-text"><strong>MaterialType:</strong> @Model.MaterialType</p>
+               <p class="card-text">
+                    <img src="@Model.ImageProduct" alt="Images" style="width: 100px; height: auto;"/>
+               </p>
+                <p class="card-text"><strong>Quantity:</strong> @Model.Quantity</p>
+                <p class="card-text"><strong>Price:</strong> @Model.Price</p>
+                <a asp-controller="Product" asp-action="UpdateProduct" 
+                asp-route-id="@Model.Id"
+                >Edit</a> 
             </div>
         </div>
     </div>

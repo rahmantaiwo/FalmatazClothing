@@ -7,7 +7,7 @@ using FalmatazClothing.Models.Repository;
 using FalmatazClothing.Models.Services;
 using Microsoft.EntityFrameworkCore;
 
-namespace FalmatazClothing.Models.Services 
+namespace FalmatazClothing.Models.Services
 {
     public class MaterialTypeService : IMaterialTypeService
     {
@@ -22,6 +22,22 @@ namespace FalmatazClothing.Models.Services
             _imageService = imageService;
         }
 
+        public async Task<BaseResponse<bool>> CheckIfMaterialTypeExist(Guid Id)
+        {
+            try
+            {
+                var materialType = await _materialTypeRepository.GetMaterialTypeAsync(Id);
+                if (materialType != null)
+                {
+                    return new BaseResponse<bool> { Message = "Material type exist", IsSuccessful = true, Data = true };
+                }
+                return new BaseResponse<bool> { Message = "Maerial type doesn't exist", IsSuccessful = false, Data = false };
+            }
+            catch (Exception ex)
+            { 
+                return new BaseResponse<bool> { Message = $"Error: {ex.Message}", IsSuccessful = false, Data = false };
+            }
+        }
         public async Task<BaseResponse<bool>> CreateMaterialType(CreateMaterialTypeDto request)
         {
             try
@@ -87,9 +103,9 @@ namespace FalmatazClothing.Models.Services
                         Name = x.Name,
                         ImageUrl = x.ImageUrl,
                     }).ToList();
-                    return new BaseResponse<List<MaterialTypeDto>> { Message = "Materials retrieved successful", IsSuccessful = true, Data = data };
+                    return new BaseResponse<List<MaterialTypeDto>> { Message = "Materials type retrieved successful", IsSuccessful = true, Data = data };
                 }
-                return new BaseResponse<List<MaterialTypeDto>> { Message = "Materials not found", IsSuccessful = false, Data = new List<MaterialTypeDto>() };
+                return new BaseResponse<List<MaterialTypeDto>> { Message = "Materials type not found", IsSuccessful = false, Data = new List<MaterialTypeDto>() };
             }
             catch (Exception ex)
             {
@@ -110,9 +126,9 @@ namespace FalmatazClothing.Models.Services
                         Name = materialType.Name,
                         ImageUrl = materialType.ImageUrl,
                     };
-                    return new BaseResponse<MaterialTypeDto> { Message = "Material retrieved successful", IsSuccessful = true, Data = data };
+                    return new BaseResponse<MaterialTypeDto> { Message = "Material type retrieved successful", IsSuccessful = true, Data = data };
                 }
-                return new BaseResponse<MaterialTypeDto> { Message = "Material not found", IsSuccessful = false, Data = new MaterialTypeDto() };
+                return new BaseResponse<MaterialTypeDto> { Message = "Material type not found", IsSuccessful = false, Data = new MaterialTypeDto() };
             }
             catch (Exception ex)
             {

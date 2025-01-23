@@ -15,7 +15,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("FalmatazClothing")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+1144137f6c2c20c31df4e5b90418418c2da54bee")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+922e8a0264aa1ff3db1752a1928d003c03931366")]
 [assembly: System.Reflection.AssemblyProductAttribute("FalmatazClothing")]
 [assembly: System.Reflection.AssemblyTitleAttribute("FalmatazClothing")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

@@ -15,12 +15,15 @@ namespace FalmatazClothing.Models.Repository
 
         public async Task<List<Product>> GetAllProductAsync()
         {
-            return await _dbContext.Products.Include(p => p.MaterialType).ToListAsync();
+            return await _dbContext.Products.Include(p => p.MaterialType). ToListAsync();
         }
 
         public Task<Product> GetProductAsync(Guid id)
         {
-            return _dbContext.Products.Include(p => p.MaterialType).FirstOrDefaultAsync(p => p.Id == id);
+            return _dbContext.Products
+                .Where(m => m.Id == id)
+                .Include(m => m.MaterialType)
+                .FirstOrDefaultAsync();
         }
     }
 }

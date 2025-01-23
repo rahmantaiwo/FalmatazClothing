@@ -24,7 +24,10 @@ namespace FalmatazClothing.Models.Services
             {
                 var newProduct = new Product()
                 {
-                    Name = request.Name,
+                    Style = request.Style,
+                    MaterialTypeId = request.MaterialTypeId,
+                    Quantity = request.Quantity,
+                    Price = request.Price,
                 };
                 if (request.ImageProduct != null)
                 {
@@ -80,9 +83,10 @@ namespace FalmatazClothing.Models.Services
                     var data = product.Select(p => new ProductDto
                     {
                         Id = p.Id,
-                        Name = p.Name,
+                        Style = p.Style,
                         ImageProduct = p.ImageProduct,
                         MaterialTypeId = p.MaterialTypeId,
+                        Quantity = p.Quantity,
                         Price = p.Price,
                         MaterialType = p.MaterialType.Name
                     }).ToList();
@@ -106,13 +110,14 @@ namespace FalmatazClothing.Models.Services
                     var data = new ProductDto
                     {
                         Id = product.Id,
-                        Name = product.Name,
+                        Style = product.Style,
                         ImageProduct = product.ImageProduct,
+                        Quantity = product.Quantity,
                         MaterialTypeId = product.MaterialTypeId,
                         Price = product.Price,
                         MaterialType = product.MaterialType.Name
                     };
-                    return new BaseResponse<ProductDto> { Message = "Product retrieved successful", IsSuccessful = true, Data = new ProductDto() };
+                    return new BaseResponse<ProductDto> { Message = "Product retrieved successful", IsSuccessful = true, Data = data };
                 }
                 return new BaseResponse<ProductDto> { Message = "Product not found", IsSuccessful = false, Data = new ProductDto() };
             }
@@ -130,8 +135,9 @@ namespace FalmatazClothing.Models.Services
                 var product = await _productRepository.GetProductAsync(id);
                 if (product != null)
                 {
-                    product.Name = request.Name;
+                    product.Style = request.Style;
                     product.ImageProduct = request.ImageProduct;
+                    product.Quantity = request.Quantity;
                     product.MaterialTypeId = request.MaterialTypeId;
                     product.Price = request.Price;
                     product.UpdateDate = DateTime.Now;

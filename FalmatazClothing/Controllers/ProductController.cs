@@ -3,21 +3,24 @@ using FalmatazClothing.Models.DTO.Product;
 using FalmatazClothing.Models.IServices;
 using FalmatazClothing.Models.Services;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace FalmatazClothing.Controllers
 {
     public class ProductController : Controller
     {
         private readonly IProductService _productService;
+        private readonly IMaterialTypeService _materialTypeService;
 
-        public ProductController(IProductService productService)
+        public ProductController(IProductService productService, IMaterialTypeService materialTypeService)
         {
             _productService = productService;
+            _materialTypeService = materialTypeService;
         }
 
         [HttpGet("all-productTypes")]
         public async Task<IActionResult> Products()
-        {
+        {   
             var result = await _productService.GetAllProducts();
             if (result != null)
             {
@@ -39,6 +42,9 @@ namespace FalmatazClothing.Controllers
         [HttpGet("create-product")]
         public async Task<IActionResult> CreateProduct()
         {
+            var materialTypes = await _materialTypeService.GetAllMaterialTypes();
+
+            ViewData["selectMaterialTypes"] = new SelectList(materialTypes.Data, "Id", "Name");
             return View();
         }
 
@@ -48,7 +54,7 @@ namespace FalmatazClothing.Controllers
             var result = await _productService.CreateProduct(request);
             if (result.IsSuccessful)
             {
-                return RedirectToAction("MaterialTypes");
+                return RedirectToAction("Products");
             }
             return RedirectToAction("CreateMaterialType");
         }
@@ -57,6 +63,9 @@ namespace FalmatazClothing.Controllers
         [HttpGet("update-product/{id}")]
         public async Task<IActionResult> UpdateProduct([FromRoute] Guid id)
         {
+            var materialTypes = await _materialTypeService.GetAllMaterialTypes();
+            ViewData["selectMaterialTypes"] = new SelectList(materialTypes.Data, "Id", "Name");
+
             var result = await _productService.GetProduct(id);
             return View(result.Data);
         }

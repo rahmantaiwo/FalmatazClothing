@@ -17,9 +17,13 @@ namespace FalmatazClothing.Models.Repository
             return await _dbContext.MaterialTypes.ToListAsync();
         }
 
-        public async Task<MaterialType> GetMaterialTypeAsync(Guid id)
+        public async Task<MaterialType?> GetMaterialTypeAsync(Guid id)
         {
-            return await _dbContext.MaterialTypes.Where(x => x.Id == id).FirstOrDefaultAsync(); 
+            return await _dbContext.MaterialTypes.FirstOrDefaultAsync(m => m.Id == id);
+        }
+        public async Task<MaterialType?> GetMaterialTypeByNameAsync(string name)
+        {
+            return await _dbContext.MaterialTypes.FirstOrDefaultAsync(m => m.Name == name);
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿@{
+﻿@using FalmatazClothing.Enum
+@{
     ViewData["Title"] = "CreateProduct";
 }
 
@@ -8,10 +9,35 @@
         <p class="text-center">Create Products</p>
         <form asp-controller="Product" asp-action="CreateProduct" enctype="multipart/form-data">
 
-            <div class="mb-3">
-                <label class="form-label">Name</label>
-                <input type="text" class="form-control" name="Fabric" required />
+           @*  <div class="mb-3">
+                <label class="form-label">Phase</label>
+                <select class="form-control" name="Phase">
+                    <option value="" disabled selected>Select Phase</option>
+                    @foreach (var phase in Enum.GetValues(typeof(FeedPhases)).Cast<FeedPhases>())
+                    {
+                        <option value="@(Convert.ToInt32(phase))">@phase</option>
+                    }
+                </select>
+            </div> *@
+
+            <div>
+                <label class="form-label">Style</label>
+                <select class="form-control" name="Style">
+                    <option disabled selected>Select Style</option>
+                    @foreach(var style in Enum.GetValues(typeof(ProductStyles)).Cast<ProductStyles>())
+                    {
+                        <option value="@(Convert.ToInt32(style))">@style</option>
+                    }
+                </select>
             </div>
+
+
+           @*  <div class="mb-3">
+                <label class="form-label">Style</label>
+                <input type="text" class="form-control" name="Name" required />
+            </div> *@
+
+
 
             <div class="mb-3">
                 <label class="form-label">MaterialType</label>
@@ -23,7 +49,12 @@
 
             <div class="mb-3">
                 <label class="form-label">Image</label>
-                <input type="file" class="form-control" name="ImageUrl" multiple required />
+                <input type="file" class="form-control" name="ImageProduct" multiple required />
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Quantity</label>
+                <input type="text" class="form-control" name="Quantity" required>
             </div>
 
             <div class="mb-3">

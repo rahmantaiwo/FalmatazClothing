@@ -1,4 +1,5 @@
-﻿@using FalmatazClothing.Models.DTO.Product;
+﻿@using FalmatazClothing.Enum
+@using FalmatazClothing.Models.DTO.Product;
 @model ProductDto;
 @{
     ViewData["Title"] = "UpdateProduct";
@@ -10,9 +11,15 @@
         <h4 class="text-center">UpdateProduct</h4>
         <form asp-controller="Product" asp-action="UpdateProduct">
 
-            <div class="mb-3">
-                <label class="form-label">Name</label>
-                <input type="text" name="Name" class="form-control" value="@Model.Name" required />
+            <div>
+                <label class="form-label">Style</label>
+                <select class="form-control" name="Style">
+                    <option disabled selected>Select Style</option>
+                    @foreach(var style in Enum.GetValues(typeof(ProductStyles)).Cast<ProductStyles>())
+                    {
+                        <option value="@(Convert.ToInt32(style))">@style</option>
+                    }
+                </select>
             </div>
 
             <div class="mb-3">
@@ -25,6 +32,11 @@
             <div class="mb-3">
                 <label class="form-label">Image</label>
                 <input type="file" class="form-control" name="ImageProduct" value="@Model.ImageProduct" multiple required />
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Quantity</label>
+                <input type="text" class="form-control" name="Quantity" required>
             </div>
 
             <div class="mb-3">
