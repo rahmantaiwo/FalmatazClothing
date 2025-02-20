@@ -1,0 +1,17 @@
+﻿@using FalmatazClothing.Models.DTO.CartItem;
+@model CartItemDto;
+
+@{
+    ViewData["Title"] = "Cart Item Details";
+}
+
+<div class="container">
+    <h2>@Model.ProductName</h2>
+    <img src="@Model.ProductImage" alt="Product Image" style="width: 200px; height: auto;">
+    <p><strong>Price:</strong> @Model.Price</p>
+    <p><strong>Quantity:</strong> @Model.Quantity</p>
+    <p><strong>Total Price:</strong> @(Model.Price * Model.Quantity)</p>
+
+    <a asp-controller="CartItem" asp-action="UpdateCartItem" asp-route-id="@Model.Id" class="btn btn-warning">Edit</a>
+    <a asp-controller="CartItem" asp-action="CartItems" class="btn btn-secondary">Back to Cart</a>
+</div>

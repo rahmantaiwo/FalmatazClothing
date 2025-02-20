@@ -1,4 +1,5 @@
-﻿using FalmatazClothing.Entities;
+﻿    using FalmatazClothing.Entities;
+using FalmatazClothing.Enum;
 using FalmatazClothing.Models.IRepository;
 using Microsoft.EntityFrameworkCore;
 
@@ -15,15 +16,19 @@ namespace FalmatazClothing.Models.Repository
 
         public async Task<List<Product>> GetAllProductAsync()
         {
-            return await _dbContext.Products.Include(p => p.MaterialType). ToListAsync();
+            return await _dbContext.Products.Include(p => p.MaterialType).ToListAsync();
         }
 
-        public Task<Product> GetProductAsync(Guid id)
+        public async Task<Product> GetProductAsync(Guid id)
         {
-            return _dbContext.Products
-                .Where(m => m.Id == id)
-                .Include(m => m.MaterialType)
-                .FirstOrDefaultAsync();
+            return await _dbContext.Products.Where(m => m.Id == id).Include(m => m.MaterialType).FirstOrDefaultAsync();
+        }
+
+        public async Task<Product?> GetProductTypeByNameAsync(ProductStyles style)
+        {
+            return await _dbContext.Products.FirstOrDefaultAsync(c => c.Style == style);
         }
     }
 }
+
+

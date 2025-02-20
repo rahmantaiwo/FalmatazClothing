@@ -11,6 +11,11 @@
         Jumpsuite,
         Kampala,
         BlouseGown,
-        ShirtDress
+        ShortSkirt
+    }
+    public enum UserRole
+    {
+        Admin = 1,
+        Customer,
     }
 }

@@ -4,6 +4,7 @@ namespace FalmatazClothing.Models.IServices
 {
     public interface IProductService
     {
+        //Task<BaseResponse<bool>> CheckIfMaterialTypeExist(Guid Id);
         Task<BaseResponse<bool>> CreateProduct(CreateProductDto request);
         Task<BaseResponse<List<ProductDto>>> GetAllProducts();
         Task<BaseResponse<ProductDto>> GetProduct(Guid id);

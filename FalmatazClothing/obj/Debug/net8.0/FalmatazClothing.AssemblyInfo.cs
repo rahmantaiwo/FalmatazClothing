@@ -11,11 +11,12 @@
 using System;
 using System.Reflection;
 
+[assembly: Microsoft.AspNetCore.Identity.UI.UIFrameworkAttribute("Bootstrap5")]
 [assembly: Microsoft.Extensions.Configuration.UserSecrets.UserSecretsIdAttribute("7d333f1c-947e-4881-9eb0-2c4708740ea5")]
 [assembly: System.Reflection.AssemblyCompanyAttribute("FalmatazClothing")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+922e8a0264aa1ff3db1752a1928d003c03931366")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+d9ecdd33b3312b8b1f6eadc2b2e01d4325f333d3")]
 [assembly: System.Reflection.AssemblyProductAttribute("FalmatazClothing")]
 [assembly: System.Reflection.AssemblyTitleAttribute("FalmatazClothing")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

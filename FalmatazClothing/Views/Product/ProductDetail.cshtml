@@ -39,14 +39,20 @@
                 <p class="card-text"><strong>Name:</strong> @Model.Style</p>
                 <p class="card-text"><strong>MaterialType:</strong> @Model.MaterialType</p>
                <p class="card-text">
-                    <img src="@Model.ImageProduct" alt="Images" style="width: 100px; height: auto;"/>
+                    <img src="~/@Model.ImageProduct" alt="Images" style="width: 100px; height: auto;"/>
                </p>
-                <p class="card-text"><strong>Quantity:</strong> @Model.Quantity</p>
+                <p class="card-text"><strong>Quantity:</strong> @Model.Stock</p>
                 <p class="card-text"><strong>Price:</strong> @Model.Price</p>
                 <a asp-controller="Product" asp-action="UpdateProduct" 
                 asp-route-id="@Model.Id"
-                >Edit</a> 
+                >Edit</a>
+
+                <button asp-controller="MaterialType" asp-action="UpdateMaterialType"
+                        type="Update" class="btn btn-outline-dark">
+                    Add To Cart
+                </button>
             </div>
         </div>
     </div>
 </div>
+@* <img src="@item.ImageProduct" alt="Image" style="width: 100px; height: auto;" /> *@

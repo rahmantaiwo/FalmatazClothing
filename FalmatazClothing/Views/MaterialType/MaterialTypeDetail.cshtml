@@ -11,7 +11,7 @@
             @Model.Name
             <div class="card-body">
                 <p class="card-text"><strong>Name:</strong>  @Model.Name</p>
-                <p class="card-text">ImageUrl: @Model.ImageUrl</p>
+                <img src="~/@Model.ImageUrl" alt="Image" style="width: 100px; height: auto;" />
                 <a asp-controller="MaterialType" asp-action="UpdateMaterialType"
                    asp-route-id="@Model.Id" class="btn btn-dark">Edit</a>
             </div>

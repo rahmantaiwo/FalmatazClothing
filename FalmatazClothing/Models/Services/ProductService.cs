@@ -26,7 +26,7 @@ namespace FalmatazClothing.Models.Services
                 {
                     Style = request.Style,
                     MaterialTypeId = request.MaterialTypeId,
-                    Quantity = request.Quantity,
+                    Stock = request.Stock,
                     Price = request.Price,
                 };
                 if (request.ImageProduct != null)
@@ -86,7 +86,7 @@ namespace FalmatazClothing.Models.Services
                         Style = p.Style,
                         ImageProduct = p.ImageProduct,
                         MaterialTypeId = p.MaterialTypeId,
-                        Quantity = p.Quantity,
+                        Stock = p.Stock,
                         Price = p.Price,
                         MaterialType = p.MaterialType.Name
                     }).ToList();
@@ -112,9 +112,9 @@ namespace FalmatazClothing.Models.Services
                         Id = product.Id,
                         Style = product.Style,
                         ImageProduct = product.ImageProduct,
-                        Quantity = product.Quantity,
+                        Stock = product.Stock,
                         MaterialTypeId = product.MaterialTypeId,
-                        Price = product.Price,
+                        Price = product.Price,  
                         MaterialType = product.MaterialType.Name
                     };
                     return new BaseResponse<ProductDto> { Message = "Product retrieved successful", IsSuccessful = true, Data = data };
@@ -135,9 +135,9 @@ namespace FalmatazClothing.Models.Services
                 var product = await _productRepository.GetProductAsync(id);
                 if (product != null)
                 {
-                    product.Style = request.Style;
                     product.ImageProduct = request.ImageProduct;
-                    product.Quantity = request.Quantity;
+                    product.Style = request.Style; 
+                    product.Stock = request.Stock;
                     product.MaterialTypeId = request.MaterialTypeId;
                     product.Price = request.Price;
                     product.UpdateDate = DateTime.Now;
