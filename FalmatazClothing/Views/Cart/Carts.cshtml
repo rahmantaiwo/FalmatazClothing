@@ -1,0 +1,54 @@
+﻿@using FalmatazClothing.Models.DTO.Cart
+@model CartDto
+
+@{
+    ViewData["Title"] = "Shopping Cart";
+}
+
+<h2>Your Shopping Cart</h2>
+
+<!-- ✅ This div will be updated dynamically with AJAX -->
+<div id="cartContainer">
+    @await Html.PartialAsync("_CartPartial", Model) <!-- ✅ Loads the partial view -->
+</div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function () {
+        // ✅ Update Quantity
+        $(document).on("submit", ".updateQuantityForm", function (event) {
+            event.preventDefault();
+            var form = $(this);
+            $.ajax({
+                type: "POST",
+                url: "/Cart/UpdateQuantity",
+                data: form.serialize(),
+                success: function (response) {
+                    $("#cartContainer").html(response); // ✅ Updates cart
+                    console.log("Cart updated successfully"); // ✅ Debugging
+                },
+                error: function () {
+                    alert("Failed to update cart.");
+                }
+            });
+        });
+
+        // ✅ Remove Item
+        $(document).on("submit", ".removeFromCartForm", function (event) {
+            event.preventDefault();
+            var form = $(this);
+            $.ajax({
+                type: "POST",
+                url: "/Cart/RemoveFromCart",
+                data: form.serialize(),
+                success: function (response) {
+                    $("#cartContainer").html(response); // ✅ Updates cart
+                    console.log("Item removed successfully"); // ✅ Debugging
+                },
+                error: function () {
+                    alert("Failed to remove item.");
+                }
+            });
+        });
+    });
+</script>

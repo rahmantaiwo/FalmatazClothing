@@ -2,7 +2,7 @@
 {
     public enum ProductStyles
     {
-        SkirtAndBlouse,
+        SkirtAndBlouse = 1,
         BubuGown,
         Gown,
         IroAndBuba,
@@ -13,9 +13,19 @@
         BlouseGown,
         ShortSkirt
     }
+
     public enum UserRole
     {
         Admin = 1,
         Customer,
+    }
+
+    public enum OrderStatus
+    {
+        Pending = 1,
+        Processsing,
+        Shipped,
+        Delivered,
+        Cancelled
     }
 }

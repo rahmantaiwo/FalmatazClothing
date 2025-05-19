@@ -31,7 +31,7 @@ namespace FalmatazClothing.Models.Services
         {
             try
             {
-       return new BaseResponse<bool> { Message = $"Role {request.Role} does not exist.", IsSuccessful = false };
+                //return new BaseResponse<bool> { Message = $"Role {request.Role} does not exist.", IsSuccessful = false };
                 var newUser = new User()
                 {
                     FirstName = request.FirstName,
@@ -39,7 +39,7 @@ namespace FalmatazClothing.Models.Services
                     Email = request.Email,
                     UserName = request.UserName,
                     PhoneNumber = request.PhoneNumber,
-                    UserRole = request.Role ?? UserRole.Customer,
+                    UserRole = request.Role ?? UserRole.Admin,
                     CreateDate = DateTime.Now
                 };
                 var addUser = await _userManager.CreateAsync(newUser, request.Password);

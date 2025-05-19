@@ -10,5 +10,6 @@ namespace FalmatazClothing.Entities
         public DateTime CreateDate { get; set; }
         public UserRole UserRole { get; set; }
         public Cart Cart { get; set; }
+        public ICollection<Order> Orders { get; set; } = new List<Order>();
     }
 }

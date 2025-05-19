@@ -1,6 +1,7 @@
 ﻿using AspNetCore;
 using AspNetCoreHero.ToastNotification.Abstractions;
 using FalmatazClothing.Entities;
+using FalmatazClothing.Enum;
 using FalmatazClothing.Models.DTO;
 using FalmatazClothing.Models.DTO.User;
 using FalmatazClothing.Models.IServices;
@@ -38,17 +39,42 @@ namespace FalmatazClothing.Controllers
         public async Task<IActionResult> Login([FromForm] LoginModel model, string? returnUrl = null)
         {
             ViewData["ReturnUrl"] = returnUrl;
+
             if (ModelState.IsValid)
             {
-                var result = await _userService.LoginAsync(model);
-                if (result.Success)
-                {
-                    _notyf.Success("User loggedin successfuly");
-                    return RedirectToAction("Index", "Home");
-                }
-            }
-            return View(model);
 
+                var ServiceResult = await _userService.LoginAsync(model);
+
+                var user = await _userManager.FindByNameAsync(model.UserName);
+                if (user == null)
+                {
+                    ModelState.AddModelError(string.Empty, "user not found");
+                    return View(model);
+                }
+
+                var signInResult = await _signInManager.PasswordSignInAsync(user.UserName, model.Password, false, false);
+                if (signInResult.Succeeded)
+
+                {
+
+                    var roles = await _userManager.GetRolesAsync(user);
+
+                    _notyf.Success("User loggedin successfuly");
+
+                    if (roles.Contains("Admin"))
+                    {
+                        return RedirectToAction("Index", "Home");
+                    }
+                    else
+                    {
+                        return RedirectToAction("Index", "Store");
+                    }
+                }
+                return View(model);
+            }
+            
+            ModelState.AddModelError("", "Invalid login attempt.");
+            return View(model); // ✅ Return the login view if login fails
         }
         public IActionResult Index()
         {

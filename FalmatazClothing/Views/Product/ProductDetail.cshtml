@@ -1,27 +1,4 @@
-﻿@* @using FalmatazClothing.Models.DTO.Product;
-@model ProductDto
-
-@{
-    ViewData["Title"] = "ProductDetail";
-}
-
-<div class="col-md-4">
-    <div class="card">
-        <div class="card-header">
-            @Model.Name
-            <div class="card-body">
-                <h5 class="card">@Model.Name</h5>
-                <p class="card-text">Name: @Model.Name</p>
-                <p class="card-text">MaterialType: @Model.MaterialType</p>
-                <p class="card-text">ImageProduct: @Model.ImageProduct</p>  
-                <p class="card-text">Price: @Model.Price</p>
-                <a asp-controller="Product" asp-action="UpdateProduct"
-                   asp-route-id="@Model.Id" class="btn btn-dark">Edit</a>
-            </div>
-        </div>
-    </div>
-</div> *@
-
+﻿@using FalmatazClothing.Models.DTO.Cart
 @using FalmatazClothing.Models.DTO.Product;
 @model ProductDto;
 
@@ -41,18 +18,83 @@
                <p class="card-text">
                     <img src="~/@Model.ImageProduct" alt="Images" style="width: 100px; height: auto;"/>
                </p>
-                <p class="card-text"><strong>Quantity:</strong> @Model.Stock</p>
+                <p class="card-text"><strong>Quantity:</strong> @Model.StockQuantity</p>
                 <p class="card-text"><strong>Price:</strong> @Model.Price</p>
                 <a asp-controller="Product" asp-action="UpdateProduct" 
                 asp-route-id="@Model.Id"
                 >Edit</a>
 
-                <button asp-controller="MaterialType" asp-action="UpdateMaterialType"
+               @*  <button asp-controller="MaterialType" asp-action="UpdateMaterialType"
                         type="Update" class="btn btn-outline-dark">
                     Add To Cart
-                </button>
+                </button> *@
             </div>
         </div>
     </div>
 </div>
-@* <img src="@item.ImageProduct" alt="Image" style="width: 100px; height: auto;" /> *@
+
+
+
+@* <form id="addToCartForm" method="post">
+    <input type="hidden" name="productId" value="@Model.Id" />
+    <input type="number" name="quantity" value="1" min="1" max="@Model.StockQuantity" required />
+    <button type="submit" class="btn btn-primary">Add to Cart</button>
+</form>
+
+@{
+    var cart = ViewData["Cart"] as CartDto;
+    bool isInCart = cart != null && cart.CartItems.Any(ci => ci.ProductId == Model.Id);
+}
+
+@if (isInCart)
+{
+    <form id="removeFromCartForm" method="post">
+        <input type="hidden" name="productId" value="@Model.Id" />
+        <button type="submit" class="btn btn-danger">Remove from Cart</button>
+    </form>
+}
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+<script>
+    $(document).ready(function () {
+        // AJAX for Add to Cart
+        $("#addToCartForm").submit(function (event) {
+            event.preventDefault();
+
+            $.ajax({
+                url: '@Url.Action("AddToCart", "Cart")',
+                type: 'POST',
+                data: $(this).serialize(),
+                success: function (response) {
+                    alert("Item added to cart!");
+                    $("#cartSummary").load('@Url.Action("Index", "Cart") #cartSummary');
+                    location.reload();
+                },
+                error: function () {
+                    alert("Failed to add item to cart.");
+                }
+            });
+        });
+
+        // AJAX for Remove from Cart
+        $("#removeFromCartForm").submit(function (event) {
+            event.preventDefault();
+
+            $.ajax({
+                url: '@Url.Action("RemoveFromCart", "Cart")',
+                type: 'POST',
+                data: $(this).serialize(),
+                success: function (response) {
+                    alert("Item removed from cart!");
+                    $("#cartSummary").load('@Url.Action("Index", "Cart") #cartSummary');
+                    location.reload();
+                },
+                error: function () {
+                    alert("Failed to remove item from cart.");
+                }
+            });
+        });
+    });
+</script>
+ *@

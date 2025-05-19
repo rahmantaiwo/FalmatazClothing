@@ -1,0 +1,20 @@
+﻿@using FalmatazClothing.Models.DTO.Order
+@model OrderDto
+
+@{
+    ViewData["Title"] = "ManageOrders";
+}
+<h2>Manage Order</h2>
+@* <p><strong>Order ID:</strong>@Model.Id</p> *@
+<p><strong>User ID:</strong>@Model.UserId</p>
+<p><strong>Current Status</strong>@Model.Status</p>
+
+@using (Html.BeginForm("Manage Order", "Order", FormMethod.Post))
+{
+    @* @Html.HiddenFor(Model = Model.UserId) *@
+    <div>
+        @Html.Label("update Status")
+        @Html.DropDownList("Status", new SelectList(Enum.GetValues(typeof(FalmatazClothing.Enum.OrderStatus))), "Select Status", new {@class = "form-control"})
+    </div>
+    <button type="submit", class="btn btn-success" ></button>
+}

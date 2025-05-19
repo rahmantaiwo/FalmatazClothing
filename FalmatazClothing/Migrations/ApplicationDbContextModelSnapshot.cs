@@ -52,7 +52,7 @@ namespace FalmatazClothing.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<Guid?>("CartId")
+                    b.Property<Guid>("CartId")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<DateTime>("CreateDate")
@@ -66,9 +66,6 @@ namespace FalmatazClothing.Migrations
 
                     b.Property<int>("Quantity")
                         .HasColumnType("int");
-
-                    b.Property<decimal>("TotalPrice")
-                        .HasColumnType("decimal(18,2)");
 
                     b.Property<DateTime>("UpdateDate")
                         .HasColumnType("datetime2");
@@ -116,13 +113,29 @@ namespace FalmatazClothing.Migrations
                     b.Property<DateTime>("CreateDate")
                         .HasColumnType("datetime2");
 
+                    b.Property<DateTime>("OrderDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("ShipppingAddress")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("Status")
+                        .HasColumnType("int");
+
                     b.Property<decimal>("TotalAmount")
                         .HasColumnType("decimal(18,2)");
 
                     b.Property<DateTime>("UpdateDate")
                         .HasColumnType("datetime2");
 
+                    b.Property<string>("UserId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
                     b.HasKey("Id");
+
+                    b.HasIndex("UserId");
 
                     b.ToTable("Orders");
                 });
@@ -136,11 +149,8 @@ namespace FalmatazClothing.Migrations
                     b.Property<DateTime>("CreateDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<Guid?>("OrderId")
+                    b.Property<Guid>("OrderId")
                         .HasColumnType("uniqueidentifier");
-
-                    b.Property<decimal>("Price")
-                        .HasColumnType("decimal(18,2)");
 
                     b.Property<Guid>("ProductId")
                         .HasColumnType("uniqueidentifier");
@@ -148,14 +158,15 @@ namespace FalmatazClothing.Migrations
                     b.Property<int>("Quantity")
                         .HasColumnType("int");
 
+                    b.Property<decimal>("UnitPrice")
+                        .HasColumnType("decimal(18,2)");
+
                     b.Property<DateTime>("UpdateDate")
                         .HasColumnType("datetime2");
 
                     b.HasKey("Id");
 
                     b.HasIndex("OrderId");
-
-                    b.HasIndex("ProductId");
 
                     b.ToTable("OrderItems");
                 });
@@ -179,7 +190,7 @@ namespace FalmatazClothing.Migrations
                     b.Property<decimal>("Price")
                         .HasColumnType("decimal(18,2)");
 
-                    b.Property<int>("Stock")
+                    b.Property<int>("StockQuantity")
                         .HasColumnType("int");
 
                     b.Property<int>("Style")
@@ -224,13 +235,13 @@ namespace FalmatazClothing.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "63b8ea4c-b469-4985-b0b0-357887467a9a",
+                            Id = "1bea3b05-761d-4cac-916b-a805fa1172fd",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         },
                         new
                         {
-                            Id = "e47cbb80-5c44-4e55-848d-a638987f4ab7",
+                            Id = "64a19160-4b14-48d5-bf9f-ab07e5a57fc5",
                             Name = "CUSTOMER",
                             NormalizedName = "CUSTOMER"
                         });
@@ -450,32 +461,43 @@ namespace FalmatazClothing.Migrations
 
             modelBuilder.Entity("FalmatazClothing.Entities.CartItem", b =>
                 {
-                    b.HasOne("FalmatazClothing.Entities.Cart", null)
+                    b.HasOne("FalmatazClothing.Entities.Cart", "Cart")
                         .WithMany("CartItems")
-                        .HasForeignKey("CartId");
+                        .HasForeignKey("CartId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("FalmatazClothing.Entities.Product", "Product")
                         .WithMany()
                         .HasForeignKey("ProductId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.Navigation("Cart");
 
                     b.Navigation("Product");
                 });
 
-            modelBuilder.Entity("FalmatazClothing.Entities.OrderItem", b =>
+            modelBuilder.Entity("FalmatazClothing.Entities.Order", b =>
                 {
-                    b.HasOne("FalmatazClothing.Entities.Order", null)
-                        .WithMany("Items")
-                        .HasForeignKey("OrderId");
-
-                    b.HasOne("FalmatazClothing.Entities.Product", "Product")
-                        .WithMany()
-                        .HasForeignKey("ProductId")
+                    b.HasOne("FalmatazClothing.Entities.User", "User")
+                        .WithMany("Orders")
+                        .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("Product");
+                    b.Navigation("User");
+                });
+
+            modelBuilder.Entity("FalmatazClothing.Entities.OrderItem", b =>
+                {
+                    b.HasOne("FalmatazClothing.Entities.Order", "Order")
+                        .WithMany("orderItems")
+                        .HasForeignKey("OrderId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Order");
                 });
 
             modelBuilder.Entity("FalmatazClothing.Entities.Product", b =>
@@ -547,13 +569,15 @@ namespace FalmatazClothing.Migrations
 
             modelBuilder.Entity("FalmatazClothing.Entities.Order", b =>
                 {
-                    b.Navigation("Items");
+                    b.Navigation("orderItems");
                 });
 
             modelBuilder.Entity("FalmatazClothing.Entities.User", b =>
                 {
                     b.Navigation("Cart")
                         .IsRequired();
+
+                    b.Navigation("Orders");
                 });
 #pragma warning restore 612, 618
         }

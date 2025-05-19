@@ -170,6 +170,21 @@
                 fillColor: "rgba(255, 165, 52, .14)",
             });
         </script>
+        
+        <!-- Cartscript !-->
+        <div id="cartSummary">
+            <a asp-controller="Cart" asp-action="Index">
+                🛒 Cart (<span id="cartItemCount">@ViewData["CartCount"]</span>)
+            </a>
+        </div>
+
+        <script>
+            $(document).ready(function () {
+                $("#cartSummary").load('@Url.Action("Index", "Cart") #cartSummary');
+            });
+        </script>
+
+
         @RenderSection("Scripts", required: false)
 
 </body>

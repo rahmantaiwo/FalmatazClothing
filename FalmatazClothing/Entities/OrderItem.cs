@@ -3,9 +3,9 @@
 	public class OrderItem : Auditability
 	{
 		public Guid ProductId { get; set; }
-		public Product Product { get; set; }
-		public int Quantity { get; set; }
-		public decimal Price { get; set; }
-		public decimal TotalPrice => Quantity * Product.Price;
-	}
+        public Guid OrderId { get; set; } 
+        public Order Order { get; set; }
+        public int Quantity { get; set; }
+		public decimal UnitPrice { get; set; }
+    }
 }

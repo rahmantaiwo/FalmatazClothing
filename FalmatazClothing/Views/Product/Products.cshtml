@@ -15,7 +15,7 @@
                 <th scope="col">Product</th>
                 <th scope="col">Material</th>
                 <th scope="col">Image</th>
-                <th scope="col">Quantity</th>
+                <th scope="col">StockQuantity</th>
                 <th scope="col">Price</th>
                 <th scope="col">Action</th>
             </tr>
@@ -34,7 +34,7 @@
                         <td>
                             <img src="@item.ImageProduct" alt="Image" style="width: 100px; height: auto;" />
                         </td>
-                        <td>@item.Stock</td>
+                        <td>@item.StockQuantity</td>
                         <td>@item.Price</td>
 
                         <td>
@@ -42,7 +42,13 @@
                                asp-route-id="@item.Id" class="btn btn-outline-info">Detail</a>
 
                             <a asp-controller="Product" asp-action="DeleteProduct" asp-route-id="@item.Id"
-                               class="btn btn-outline-danger">Delete</a>
+                               class="btn btn-outline-danger">Delete</a> &nbsp;
+
+                          @*   <form class="addToCartForm" method="post">
+                                <input type="hidden" name="productId" value="@item.Id" />
+                                <input type="hidden" name="quantity" value="1" />
+                                <button type="submit" class="btn btn-primary">Add to Cart</button>
+                            </form> *@
                         </td>
                     </tr>
                     index++;
@@ -57,3 +63,32 @@
         </tbody>
     </table>
 </div>
+
+
+@* <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script> *@
+
+
+@* <script>
+    $(document).ready(function () {
+        $(".addToCartForm").submit(function (event) {
+            event.preventDefault();
+            console.log(event);
+            var form = $(this);
+            console.log(form);
+            $.ajax({
+                url: '@Url.Action("AddToCart", "Cart")',
+                type: "POST",
+                data: form.serialize(),
+                success: function (response) {
+                    console.log(response);
+                    alert("Item added to cart!");
+                    $("#cartSummary").load('@Url.Action("Carts", "Cart") #cartSummary');
+                },
+                error: function (err) {
+                    console.error(err);
+                    alert("Failed to add item to cart.");
+                }
+            });
+        });
+    });
+</script> *@

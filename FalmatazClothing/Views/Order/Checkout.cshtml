@@ -1,0 +1,132 @@
+﻿@using FalmatazClothing.Models.DTO.Order
+@model  CheckoutViewModel
+ @* @model OrderDto *@
+
+<h2>Checkout</h2>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Product</th>
+            <th>Quantity</th>
+            <th>Price</th>
+            <th>Subtotal</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(var item in Model.Cart.CartItems)
+        {
+            <tr>
+                <td>@item.ProductName</td>
+                <td>@item.Quantity</td>
+                <td>@item.Price</td>
+                <td>$@(item.Quantity * item.Price)</td>
+            </tr>
+        }
+    </tbody>
+</table>
+<!--Shipping Address form-->
+<h4>Total: @Model.Cart.CartItems.Sum(ci => ci.Quantity * ci.Price)<h4>
+<h2>Place Your Order</h2>
+
+    <form method="post" asp-action="PlaceOrder">
+        @Html.AntiForgeryToken()
+        <div class="form-group">
+            <label asp-for="ShippingAddress"></label>
+            <input asp-for="ShippingAddress" class="form-control" />
+            <span asp-validation-for="ShippingAddress" class="text-danger"></span>
+        </div>
+        <input type="hidden" asp-for="UserId" />
+        <button type="submit" class="btn btn-primary">Place Order</button>
+    </form>
+
+@* <form asp-action="PlaceOrders" method="post">
+    <div class="form-group">
+        <label asp-for="ShippingAddress"></label>
+        <input asp-for="ShippingAddress" class="form-control"></input>
+        <span asp-validation-for="ShippingAddress" class="text-danger"></span>
+    </div>
+    <button type="submit" class="btn btn-primary">Place Order</button>
+</form> *@
+@* <h4>Total: $@(Model.Cart.CartItems.Sum(ci => ci.Quantity *ci.Price))</h4>
+@using (Html.BeginForm("PlaceOrder","Order", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+    <div class="form-group">
+        @Html.LabelFor(m => m.ShippingAddress)
+        @Html.TextBoxFor(m => m.ShippingAddress, new {@class = "form-control", required = "required"})
+        <button type="submit" class="btn btn-success"></button>
+    </div>
+} *@
+@* 
+@{
+    ViewData["Title"] = "Checkout";
+}
+<h2>Your Order</h2>
+@if(Model != null && Model.Any())
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Order Date</th>
+                <th>Total Amount</th>
+                <th>Status</th>
+                <th>Shipping Address</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach(var order in Model)
+            {
+                <tr>
+                    <td>@order.OrderDate.ToString("g")</td>
+                    <td></td>@order.TotalAmount.ToString("c")
+                    <td>@order.Status</td>
+                    <td>@order.ShipppingAddress</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <p>You have no orderss</p>
+}
+<h3>Place a New Order</h3>
+@using (Html.BeginForm("PlaceOrder", "Order", FormMethod.Post))
+{
+    <div class="form-group">
+        @Html.Label("Shipping")
+        @Html.TextBox("ShippingAddress", null, new {@class = "form-control", required = "required"})
+    </div>
+    @Html.Hidden("UserId", User.Identity.Name)
+<button type="submit" class ="btn btn-primary">Place Order</button>
+}
+ *@
+
+
+
+@* @using FalmatazClothing.Models.DTO.Order
+@model OrderDto
+
+<h3>Order Details</h3>
+<p><strong>Status:</strong> @Model.Status</p>
+<p><strong>Shipping Address:</strong> @Model.ShipppingAddress</p>
+<table>
+    <thead>
+        <tr>
+            <th>Product</th>
+            <th>Quantity</th>
+            <th>Price</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(var item in Model.OrderItems)
+        {
+            <tr>
+                <td>@item.ProductId</td>
+                <td>@item.Quantity</td>
+                <td>@item.UnitPrice</td>
+            </tr>
+        }
+    </tbody>
+</table>
+<p><strong>Total:</strong>$@Model.TotalAmount</p> *@

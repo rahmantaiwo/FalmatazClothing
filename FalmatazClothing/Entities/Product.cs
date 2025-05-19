@@ -8,7 +8,7 @@ namespace FalmatazClothing.Entities
         public Guid MaterialTypeId {  get; set; }
         public MaterialType MaterialType { get; set; }
         public string ImageProduct { get; set; }
-        public int Stock { get; set; }
+        public int StockQuantity { get; set; }
         public decimal Price { get; set; }
     }
 }

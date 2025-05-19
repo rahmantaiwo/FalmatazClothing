@@ -26,7 +26,7 @@ namespace FalmatazClothing.Models.Services
                 {
                     Style = request.Style,
                     MaterialTypeId = request.MaterialTypeId,
-                    Stock = request.Stock,
+                    StockQuantity = request.StockQuantity,
                     Price = request.Price,
                 };
                 if (request.ImageProduct != null)
@@ -86,7 +86,7 @@ namespace FalmatazClothing.Models.Services
                         Style = p.Style,
                         ImageProduct = p.ImageProduct,
                         MaterialTypeId = p.MaterialTypeId,
-                        Stock = p.Stock,
+                        StockQuantity = p.StockQuantity,
                         Price = p.Price,
                         MaterialType = p.MaterialType.Name
                     }).ToList();
@@ -112,7 +112,7 @@ namespace FalmatazClothing.Models.Services
                         Id = product.Id,
                         Style = product.Style,
                         ImageProduct = product.ImageProduct,
-                        Stock = product.Stock,
+                        StockQuantity = product.StockQuantity,
                         MaterialTypeId = product.MaterialTypeId,
                         Price = product.Price,  
                         MaterialType = product.MaterialType.Name
@@ -137,7 +137,7 @@ namespace FalmatazClothing.Models.Services
                 {
                     product.ImageProduct = request.ImageProduct;
                     product.Style = request.Style; 
-                    product.Stock = request.Stock;
+                    product.StockQuantity = request.StockQuantity;
                     product.MaterialTypeId = request.MaterialTypeId;
                     product.Price = request.Price;
                     product.UpdateDate = DateTime.Now;

@@ -1,0 +1,55 @@
+﻿@using FalmatazClothing.Models.DTO.Cart
+@model CartDto
+
+@if (!Model.CartItems.Any())
+{
+    <p>Your cart is empty.</p>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Product</th>
+                <th>Quantity</th>
+                <th>Price</th>
+                <th>Subtotal</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.CartItems)
+            {
+                <tr>
+                    <td>@item.ProductName</td>
+                    <td>
+                        <form class="updateQuantityForm">
+                            <input type="hidden" name="productId" value="@item.ProductId" />
+                            <input type="number" name="quantity" value="@item.Quantity" min="1" class="form-control w-50 d-inline" />
+                            <button type="submit" class="btn btn-success btn-sm">Update</button>
+                        </form>
+                    </td>
+                    <td>$@item.Price</td>
+                    <td>$@(item.Quantity * item.Price)</td>
+                    <td>
+                        <form class="removeFromCartForm">
+                            <input type="hidden" name="productId" value="@item.ProductId" />
+                            <button type="submit" class="btn btn-danger btn-sm">Remove</button>
+                        </form>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    <h4>Total: $@(Model.CartItems.Sum(ci => ci.Quantity * ci.Price))</h4>
+    <a href="@Url.Action("Checkout", "Order")" class="btn btn-success">Checkout</a>
+
+    @* @Html.ActionLink("Checkout","Checkout","Order", "null", new {@class = "btn btn-succcess"}) *@
+
+
+    @* <button class="btn btn-success">Checkout</button>
+        <a href="@Url.Action("Checkout", "Order")" class="btn btn-success">Checkout</a>
+
+    *@
+}

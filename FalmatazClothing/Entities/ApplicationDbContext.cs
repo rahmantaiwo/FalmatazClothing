@@ -44,24 +44,5 @@ namespace FalmatazClothing.Entities
                 }
             );
         }
-
-
-
-
-
-
-        //public static async Task SeedRoles(RoleManager<IdentityRole> roleManager)
-        //{
-        //	string[] roleNames = { "Admin", "Customer" };
-
-        //	foreach (var roleName in roleNames)
-        //	{
-        //		var roleExists = await roleManager.RoleExistsAsync(roleName);
-        //		if(!roleExists)
-        //		{
-        //			await roleManager.CreateAsync(new IdentityRole(roleName));
-        //		}
-        //	}
-        //}
     }
 }

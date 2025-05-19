@@ -15,7 +15,7 @@ namespace FalmatazClothing.Models.DTO.Product
         [Required(ErrorMessage = "Image is required")]
         public IFormFileCollection ImageProduct { get; set; }
         [Required(ErrorMessage = "Quantity is required")]
-        public int Stock { get; set; }
+        public int StockQuantity { get; set; }
         [Required(ErrorMessage = "Price is required")]
         public decimal Price { get; set; }
         public DateTime CreateDate { get; set; } = DateTime.Now;
