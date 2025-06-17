@@ -105,7 +105,7 @@ namespace FalmatazClothing.Controllers
                 ModelState.AddModelError("",result.Message);
                 return View("Checkout", model);
             }
-            return RedirectToAction("OrderConfirmation", new { id = result.Data});
+            return RedirectToAction("Index", "Store");
         }
         [HttpPost]
         public async Task<IActionResult> ManageOrdersAsync(Guid OrderId, OrderStatus status) 
